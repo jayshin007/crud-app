@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="referrer" content="no-referrer-when-downgrade" />
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit User Info as JSON</title>
+</head>
+<body>
+    <h2>Submit User Information</h2>
+
+    <form id="postUserForm">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+
+
+
+        document.getElementById('postUserForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // 폼 입력 값 가져오기
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            // Fetch API를 사용해 JSON 형식으로 데이터 전송
+            fetch('http://localhost:8090/user', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json' // Content-Type 설정
+                },
+                body: JSON.stringify({ // JSON으로 변환
+                    Name: name,
+                    Email: email
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(`Response: ${JSON.stringify(data)}`);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
