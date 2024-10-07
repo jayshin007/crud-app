@@ -16,8 +16,8 @@ import (
 const (
 	dbDriver = "mysql"
 	dbUser   = "root"
-	dbPass   = "root"
-	dbName   = "tcp(localhost:3306)/testdb"
+	dbPass   = "cm9vdA=="
+	dbName   = "tcp(10.96.10.189:3306)/testdb"
 )
 
 func GetConnector() *sql.DB {
