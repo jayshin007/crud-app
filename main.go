@@ -25,7 +25,7 @@ func GetConnector() *sql.DB {
 		User:                 "root",
 		Passwd:               "root",
 		Net:                  "tcp",
-		Addr:                 "localhost:3306",
+		Addr:                 "10.96.10.189:3306",
 		Collation:            "utf8mb4_general_ci",
 		Loc:                  time.UTC,
 		MaxAllowedPacket:     4 << 20.,
